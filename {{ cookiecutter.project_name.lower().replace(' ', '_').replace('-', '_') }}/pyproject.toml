@@ -15,10 +15,10 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 {# Taken from https://github.com/TezRomacH/python-package-template -#}
-{% if cookiecutter.cli_script -%}
+{%- if cookiecutter.cli_script != "False" -%}
 [tool.poetry.scripts]
 "{{ cookiecutter.project_name }}" = "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}.__main__:app"
-{%- endif %}
+{%- endif -%}
 
 [tool.poetry.dependencies]
 python = "^{{cookiecutter.python_version}}"
