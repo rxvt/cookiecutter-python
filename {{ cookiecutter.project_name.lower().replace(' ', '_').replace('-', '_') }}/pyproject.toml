@@ -7,7 +7,7 @@ readme = "README.md"
 license = "{{cookiecutter.licence}}"
 repository = "https://github.com/rxvt/{{cookiecutter.project_name}}"
 packages = [
-    { include = "{{cookiecutter.project_name}}", from = "src"}
+    { include = "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}", from = "src"}
 ]
 
 [build-system]
