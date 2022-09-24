@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "{{cookiecutter.project_name}}"
+version = "0.1.0"
+description = ""
+authors = ["{{cookiecutter.author_name}} <{{cookiecutter.author_email}}>"]
+readme = "README.md"
+license = "{{cookiecutter.licence}}"
+repository = "https://github.com/rxvt/{{cookiecutter.project_name}}"
+packages = [
+    { include = "{{cookiecutter.project_name}}", from = "src"}
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+{# Taken from https://github.com/TezRomacH/python-package-template -#}
+{% if cookiecutter.cli_script -%}
+[tool.poetry.scripts]
+"{{ cookiecutter.project_name }}" = "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}.__main__:app"
+{%- endif %}
+
+[tool.poetry.dependencies]
+python = "^{{cookiecutter.python_version}}"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.8.0"
+pytest-cov = "^3.0.0"
+pytest-mock = "^3.8.2"
+isort = "^5.10.1"
+mypy = "^0.971"
+pydocstyle = "^6.1.1"
+nox = "^2022.8.7"
+nox-poetry = "^1.0.1"
+flake8 = "^5.0.4"
+coverage = {extras = ["toml"], version = "^6.4.4"}
+flake8-bandit = "^4.1.1"
+flake8-black = "^0.3.3"
+flake8-bugbear = "^22.9.23"
+flake8-isort = "^4.2.0"
+flake8-docstrings = "^1.6.0"
+darglint = "^1.8.1"
+flake8-annotations = "^2.9.1"
+safety = "^2.2.0"
+
