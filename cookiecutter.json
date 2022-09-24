@@ -5,8 +5,8 @@
     "licence": "MIT",
     "python_version": "3.10",
     "cli_script": false,
-    "include_python_37": [false, "3.7.13"],
-    "include_python_38": [false, "3.8.13"],
-    "include_python_39": [false, "3.9.12"],
-    "include_python_310": ["3.10.7", false]
+    "python_37": "3.7.13",
+    "python_38": "3.8.13",
+    "python_39": "3.9.12",
+    "python_310": "3.10.7"
 }

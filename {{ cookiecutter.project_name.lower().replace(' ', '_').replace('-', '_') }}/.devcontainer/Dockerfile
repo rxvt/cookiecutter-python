@@ -4,10 +4,10 @@
 ARG VARIANT="3.10-bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
-{% if cookiecutter.include_python_37 != "False" %}ENV PYTHON_37={{ cookiecutter.include_python_37 }}{% endif %}
-{% if cookiecutter.include_python_38 != "False" %}ENV PYTHON_38={{ cookiecutter.include_python_38 }}{% endif %}
-{% if cookiecutter.include_python_39 != "False" %}ENV PYTHON_39={{ cookiecutter.include_python_39 }}{% endif %}
-{% if cookiecutter.include_python_310 != "False" %}ENV PYTHON_310={{ cookiecutter.include_python_310 }}{% endif %}
+ENV PYTHON_37={{ cookiecutter.python_37 }}
+ENV PYTHON_38={{ cookiecutter.python_38 }}
+ENV PYTHON_39={{ cookiecutter.python_39 }}
+ENV PYTHON_310={{ cookiecutter.python_310 }}
 
 # [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
 ARG NODE_VERSION="none"
@@ -34,19 +34,9 @@ RUN git clone https://github.com/pyenv/pyenv.git ~/.pyenv \
 RUN curl -sSL https://install.python-poetry.org | python3 -
 RUN $HOME/.local/bin/poetry config virtualenvs.prefer-active-python true
 RUN $HOME/.local/bin/poetry config virtualenvs.in-project true
-{% if cookiecutter.include_python_37 != "False" -%}
 RUN $HOME/.pyenv/bin/pyenv install --skip-existing $PYTHON_37
-{%- endif %}
-{% if cookiecutter.include_python_38 != "False" -%}
 RUN $HOME/.pyenv/bin/pyenv install --skip-existing $PYTHON_38
-{%- endif %}
-{% if cookiecutter.include_python_39 != "False" -%}
 RUN $HOME/.pyenv/bin/pyenv install --skip-existing $PYTHON_39
-{%- endif %}
-{% if cookiecutter.include_python_310 != "False" -%}
 RUN $HOME/.pyenv/bin/pyenv install --skip-existing $PYTHON_310
-{%- endif %}
 
-{% if cookiecutter.include_python_310 != "False" -%}
 RUN $HOME/.pyenv/bin/pyenv global $PYTHON_310
-{%- endif %}
